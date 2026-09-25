@@ -1,0 +1,27 @@
+# Node / Core
+core/node_modules/
+core/dist/
+core/.env
+core/*.tsbuildinfo
+
+# Node / Extension
+extension/node_modules/
+extension/dist/
+extension/*.tsbuildinfo
+
+# macOS / Swift
+macos/.build/
+macos/*.xcodeproj/xcuserdata/
+macos/*.xcworkspace/xcuserdata/
+macos/.swiftpm/xcode/xcuserdata/
+macos/DerivedData/
+*.DS_Store
+
+# Xcode
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+
+# OS
+.DS_Store
+Thumbs.db

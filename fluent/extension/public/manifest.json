@@ -1,0 +1,72 @@
+{
+  "manifest_version": 3,
+  "name": "Fluent",
+  "version": "0.1.0",
+  "description": "AI writing assistant — type /fixit, /rewrite, /formal or /casual to fix and improve text in any field.",
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "fluent@local",
+      "strict_min_version": "128.0"
+    }
+  },
+
+  "icons": {
+    "16":  "icons/16.png",
+    "48":  "icons/48.png",
+    "128": "icons/128.png"
+  },
+
+  "action": {
+    "default_popup": "popup/index.html",
+    "default_icon": {
+      "16":  "icons/16.png",
+      "48":  "icons/48.png",
+      "128": "icons/128.png"
+    },
+    "default_title": "Fluent"
+  },
+
+  "options_ui": {
+    "page": "options/index.html",
+    "open_in_tab": true
+  },
+
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content/index.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "permissions": [
+    "storage",
+    "identity"
+  ],
+
+  "host_permissions": [
+    "https://api.anthropic.com/*",
+    "https://api.openai.com/*",
+    "https://generativelanguage.googleapis.com/*",
+    "https://claude.ai/*",
+    "https://auth.openai.com/*",
+    "https://accounts.google.com/*"
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["content/overlay.css"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}
